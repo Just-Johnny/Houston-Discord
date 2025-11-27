@@ -3,858 +3,457 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Houston Discord - Connect with Houstonians</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: "media",
-        theme: {
-          extend: {
-            colors: {
-              discord: "#5865F2",
-              // Houston Sports Teams
-              astros: {
-                orange: "#EB6E1F",
-                navy: "#002D62",
-              },
-              texans: {
-                blue: "#03202F",
-                red: "#A71930",
-              },
-              dynamo: {
-                orange: "#F68712",
-              },
-              rockets: {
-                red: "#CE1141",
-                gray: "#C4CED4",
-              },
-              // Brighter dark mode colors
-              "dark-bg": "#1f2937",
-              "dark-card": "#374151",
-            },
-          },
-        },
-      };
-    </script>
+    <title>Houston Discord - Split Screen Layout</title>
     <style>
-      /* Smooth scroll behavior */
-      html {
-        scroll-behavior: smooth;
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
 
-      /* Fade in animation */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+          sans-serif;
+        overflow-x: hidden;
       }
 
-      .fade-in {
-        animation: fadeInUp 0.8s ease-out forwards;
+      /* Left Fixed Panel */
+      .split-left {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 50%;
+        height: 100vh;
+        background: linear-gradient(135deg, #1e3a5f 0%, #2c5f8d 100%);
+        /* Desktop background image */
+        background-image: url("assets/images/bg-header-portrait.webp");
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
       }
 
-      /* Advanced gradient mesh animation */
-      @keyframes gradient-mesh {
-        0% {
-          background-position: 0% 0%;
-        }
-        25% {
-          background-position: 100% 0%;
-        }
-        50% {
-          background-position: 100% 100%;
-        }
-        75% {
-          background-position: 0% 100%;
-        }
-        100% {
-          background-position: 0% 0%;
-        }
-      }
-
-      /* Pulse animation */
-      @keyframes pulse-glow {
-        0%,
-        100% {
-          opacity: 0.4;
-          transform: scale(1);
-        }
-        50% {
-          opacity: 0.7;
-          transform: scale(1.15);
-        }
-      }
-
-      /* Circular blob animation */
-      @keyframes blob-float {
-        0%,
-        100% {
-          transform: translate(0, 0) scale(1);
-        }
-        33% {
-          transform: translate(30px, -30px) scale(1.1);
-        }
-        66% {
-          transform: translate(-20px, 20px) scale(0.9);
-        }
-      }
-
-      /* Hero background - simple gradient */
-      .hero-bg {
-        position: relative;
-        background: linear-gradient(135deg, #002d62 0%, #003d82 25%, #a71930 50%, #ce1141 75%, #eb6e1f 100%);
-      }
-
-      /* About section with mesh gradient */
-      .about-bg {
-        position: relative;
-        background: linear-gradient(
-          120deg,
-          rgba(235, 110, 31, 0.05) 0%,
-          rgba(206, 17, 65, 0.08) 50%,
-          rgba(246, 135, 18, 0.05) 100%
-        );
-        background-size: 200% 200%;
-        animation: gradient-mesh 25s ease infinite;
-      }
-
-      /* Activities section - cleaner, more readable */
-      .activities-bg {
-        position: relative;
-        background: transparent;
-      }
-
-      /* Rules section with diagonal gradient */
-      .rules-bg {
-        position: relative;
-        background: linear-gradient(
-          165deg,
-          rgba(206, 17, 65, 0.03) 0%,
-          rgba(235, 110, 31, 0.05) 30%,
-          rgba(167, 25, 48, 0.04) 60%,
-          rgba(246, 135, 18, 0.03) 100%
-        );
-        background-size: 400% 400%;
-        animation: gradient-mesh 30s ease infinite;
-      }
-
-      /* Roles section - much more visible animation with creative colors */
-      .roles-bg {
-        position: relative;
-        background: linear-gradient(
-          225deg,
-          rgba(246, 135, 18, 0.25) 0%,
-          rgba(255, 107, 107, 0.2) 15%,
-          rgba(206, 17, 65, 0.22) 30%,
-          rgba(138, 43, 226, 0.18) 45%,
-          rgba(0, 45, 98, 0.15) 60%,
-          rgba(30, 144, 255, 0.2) 75%,
-          rgba(235, 110, 31, 0.25) 100%
-        );
-        background-size: 400% 400%;
-        animation: gradient-mesh 20s ease infinite;
-      }
-
-      /* Dark mode specific - brighter background for roles */
-      @media (prefers-color-scheme: dark) {
-        .roles-bg {
-          background: linear-gradient(
-            225deg,
-            rgba(246, 135, 18, 0.35) 0%,
-            rgba(255, 107, 107, 0.3) 15%,
-            rgba(206, 17, 65, 0.32) 30%,
-            rgba(138, 43, 226, 0.28) 45%,
-            rgba(100, 149, 237, 0.25) 60%,
-            rgba(30, 144, 255, 0.3) 75%,
-            rgba(235, 110, 31, 0.35) 100%
-          );
-          background-size: 400% 400%;
-          animation: gradient-mesh 20s ease infinite;
-        }
-      }
-
-      /* Contact section with animated circular blobs */
-      .contact-bg {
-        position: relative;
-        background: linear-gradient(135deg, #002d62 0%, #003a7c 25%, #03202f 50%, #002856 75%, #001835 100%);
-        background-size: 400% 400%;
-        animation: gradient-mesh 18s ease infinite;
-      }
-
-      /* Animated circular blobs for contact section */
-      .circular-blob {
+      /* Optional: Add overlay for better text readability */
+      .split-left::before {
+        content: "";
         position: absolute;
-        border-radius: 50%;
-        filter: blur(80px);
-        animation: blob-float 12s ease-in-out infinite;
-        pointer-events: none;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(30, 58, 95, 0.4);
+        z-index: 1;
       }
 
-      .circular-blob-1 {
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(circle, rgba(235, 110, 31, 0.4) 0%, rgba(235, 110, 31, 0) 70%);
-        top: -100px;
-        left: -100px;
-        animation-delay: 0s;
+      .hero-content {
+        text-align: center;
+        color: white;
+        padding: 3rem;
+        max-width: 600px;
+        position: relative;
+        z-index: 2;
       }
 
-      .circular-blob-2 {
-        width: 450px;
-        height: 450px;
-        background: radial-gradient(circle, rgba(206, 17, 65, 0.35) 0%, rgba(206, 17, 65, 0) 70%);
-        bottom: -100px;
-        right: -100px;
-        animation-delay: -4s;
+      .hero-content h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        color: white;
+        text-shadow: -2px -2px 0 #eb6e1f, 2px -2px 0 #eb6e1f, -2px 2px 0 #eb6e1f, 2px 2px 0 #eb6e1f, -4px -4px 0 #2c5f8d,
+          4px -4px 0 #2c5f8d, -4px 4px 0 #2c5f8d, 4px 4px 0 #2c5f8d;
       }
 
-      .circular-blob-3 {
-        width: 400px;
-        height: 400px;
-        background: radial-gradient(circle, rgba(246, 135, 18, 0.3) 0%, rgba(246, 135, 18, 0) 70%);
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        animation-delay: -8s;
+      .hero-content p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        opacity: 0.95;
+        background-color: rgba(30, 58, 95, 0.8);
+        padding: 8px 30px 12px 30px;
+        border-radius: 20px;
+        border: solid 3px rgba(235, 110, 31, 0.5);
       }
 
-      /* Decorative blobs */
-      .blob {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(60px);
-        opacity: 0.15;
-        animation: pulse-glow 8s ease-in-out infinite;
-        pointer-events: none;
-      }
-
-      .blob-1 {
-        width: 400px;
-        height: 400px;
-        background: #eb6e1f;
-        top: -100px;
-        left: -100px;
-        animation-delay: 0s;
-      }
-
-      .blob-2 {
-        width: 350px;
-        height: 350px;
-        background: #ce1141;
-        bottom: -100px;
-        right: -100px;
-        animation-delay: -3s;
-      }
-
-      .blob-3 {
-        width: 300px;
-        height: 300px;
-        background: #f68712;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        animation-delay: -6s;
-      }
-
-      /* Card hover effects - no zoom */
-      .card-hover {
+      .cta-button {
+        display: inline-block;
+        background-color: #eb6e1f;
+        color: white;
+        font-size: 1.25rem;
+        font-weight: 700;
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        text-decoration: none;
         transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(235, 110, 31, 0.3);
       }
 
-      .card-hover:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 25px 50px rgba(235, 110, 31, 0.2);
+      .cta-button:hover {
+        background-color: #d45d0f;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(235, 110, 31, 0.4);
       }
 
-      /* Role card hover */
-      .role-card {
-        transition: all 0.3s ease;
-        border-left: 3px solid transparent;
-        /* Enhanced Glassmorphism effect */
-        background: rgba(255, 255, 255, 0.4) !important;
-        backdrop-filter: blur(12px) !important;
-        -webkit-backdrop-filter: blur(12px) !important;
-        border: 1px solid rgba(255, 255, 255, 0.4) !important;
+      /* Right Scrolling Content */
+      .split-right {
+        margin-left: 50%;
+        min-height: 100vh;
+        background-color: #e8dcc4;
+        padding: 3rem;
+      }
+
+      .content-section {
+        margin-bottom: 5rem;
+      }
+
+      .section-title {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #1e3a5f;
+        margin-bottom: 1.5rem;
+      }
+
+      .section-text {
+        font-size: 1.25rem;
+        line-height: 1.8;
+        color: #333;
+      }
+
+      /* Feature Cards Grid */
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .feature-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
       }
 
-      @media (prefers-color-scheme: dark) {
-        .role-card {
-          background: rgba(55, 65, 81, 0.3) !important;
-          backdrop-filter: blur(12px) !important;
-          -webkit-backdrop-filter: blur(12px) !important;
-          border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      .feature-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      }
+
+      .feature-card.border-orange {
+        border-left: 4px solid #eb6e1f;
+      }
+
+      .feature-card.border-navy {
+        border-left: 4px solid #1e3a5f;
+      }
+
+      .feature-card h3 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #1e3a5f;
+        margin-bottom: 0.75rem;
+      }
+
+      .feature-card p {
+        font-size: 1rem;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      /* Stats Grid */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .stat-box {
+        background: #1e3a5f;
+        color: white;
+        text-align: center;
+        padding: 2.5rem 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(30, 58, 95, 0.3);
+      }
+
+      .stat-box.orange {
+        background: #eb6e1f;
+      }
+
+      .stat-number {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        font-size: 1.25rem;
+        opacity: 0.95;
+      }
+
+      /* FAQ Section */
+      .faq-item {
+        background: white;
+        padding: 1.5rem 2rem;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+        border-left: 4px solid #1e3a5f;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .faq-item:nth-child(even) {
+        border-left-color: #eb6e1f;
+      }
+
+      .faq-question {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #1e3a5f;
+        margin-bottom: 0.75rem;
+      }
+
+      .faq-answer {
+        font-size: 1rem;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      .faq-answer a {
+        color: #eb6e1f;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .faq-answer a:hover {
+        text-decoration: underline;
+      }
+
+      /* Footer */
+      .footer {
+        text-align: center;
+        padding: 2rem;
+        margin-top: 3rem;
+        border-top: 2px solid rgba(30, 58, 95, 0.2);
+        color: #666;
+      }
+
+      .footer p {
+        margin: 0.5rem 0;
+        font-size: 0.95rem;
+      }
+
+      .footer .copyright {
+        font-weight: 600;
+        color: #1e3a5f;
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 1024px) {
+        .split-left {
+          position: relative;
+          width: 100%;
+          height: 60vh;
+          /* Mobile background image - different from desktop */
+          background-image: url("assets/images/bg-header.webp");
+          background-size: cover;
+          background-position: center center;
+          background-repeat: no-repeat;
+        }
+
+        .split-right {
+          margin-left: 0;
+          padding: 2rem 1.5rem;
         }
       }
 
-      .role-card:hover {
-        transform: translateX(8px);
-        border-left-color: #eb6e1f !important;
-        box-shadow: 0 8px 20px rgba(235, 110, 31, 0.25);
-        background: rgba(255, 255, 255, 0.6) !important;
-        backdrop-filter: blur(16px) !important;
-        -webkit-backdrop-filter: blur(16px) !important;
-      }
+      @media (max-width: 768px) {
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
 
-      @media (prefers-color-scheme: dark) {
-        .role-card:hover {
-          background: rgba(55, 65, 81, 0.5) !important;
+        .hero-content p {
+          font-size: 1.125rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .section-text {
+          font-size: 1rem;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .stat-number {
+          font-size: 2.5rem;
         }
       }
 
-      /* Section backgrounds */
-      .section-bg {
-        position: relative;
-        overflow: hidden;
-      }
+      @media (min-width: 1025px) and (max-width: 1280px) {
+        .hero-content h1 {
+          font-size: 3rem;
+        }
 
-      /* Scroll reveal */
-      .scroll-reveal {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s ease-out;
-      }
-
-      .scroll-reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Glowing text effect */
-      .glow-text {
-        text-shadow: 0 0 20px rgba(235, 110, 31, 0.5), 0 0 40px rgba(235, 110, 31, 0.3);
+        .section-title {
+          font-size: 2.5rem;
+        }
       }
     </style>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D2ZQ7D097B"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-D2ZQ7D097B");
-    </script>
   </head>
-  <body class="bg-gray-50 dark:bg-dark-bg text-gray-900 dark:text-gray-100 transition-colors">
-    <!-- Navigation -->
-    <nav class="bg-white dark:bg-dark-card shadow-md sticky top-0 z-50">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16">
-          <div class="flex-shrink-0">
-            <h1
-              class="text-2xl font-bold bg-gradient-to-r from-astros-orange via-texans-red to-rockets-red bg-clip-text text-transparent"
-            >
-              Houston Discord
-            </h1>
-          </div>
-          <div class="hidden md:block">
-            <div class="ml-10 flex items-baseline space-x-4">
-              <a href="#about" class="hover:text-astros-orange px-3 py-2 rounded-md text-sm font-medium transition"
-                >About</a
-              >
-              <a href="#activities" class="hover:text-astros-orange px-3 py-2 rounded-md text-sm font-medium transition"
-                >Activities</a
-              >
-              <a href="#rules" class="hover:text-astros-orange px-3 py-2 rounded-md text-sm font-medium transition"
-                >Rules</a
-              >
-              <a href="#roles" class="hover:text-astros-orange px-3 py-2 rounded-md text-sm font-medium transition"
-                >Roles</a
-              >
-              <a href="#contact" class="hover:text-astros-orange px-3 py-2 rounded-md text-sm font-medium transition"
-                >Contact</a
-              >
-            </div>
-          </div>
-        </div>
+  <body>
+    <!-- Left Fixed Side -->
+    <div class="split-left">
+      <div class="hero-content">
+        <h1>Houston<br />Discord</h1>
+        <p>Connect with 8,000+ Houstonians</p>
+        <a href="http://discord.gg/houston" target="_blank" class="cta-button">Join Now</a>
       </div>
-    </nav>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="hero-bg text-white py-20 section-bg">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 fade-in">
-        <h2 class="text-5xl font-bold mb-4 glow-text">Welcome to Houston Discord</h2>
-        <p class="text-xl mb-8">Connect with 9,000+ Houstonians in our vibrant community</p>
-        <a
-          href="http://discord.gg/houston"
-          target="_blank"
-          class="inline-block bg-astros-orange hover:bg-dynamo-orange text-white font-bold py-3 px-8 rounded-lg text-lg transition transform hover:scale-110 shadow-2xl hover:shadow-astros-orange/50 focus:outline-none focus:ring-4 focus:ring-astros-orange/50 hover:ring-4 hover:ring-astros-orange/60"
-        >
-          Join Our Discord
-        </a>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-16 bg-white dark:bg-dark-card about-bg section-bg">
-      <!-- Decorative Blobs -->
-      <div class="blob blob-1"></div>
-      <div class="blob blob-2"></div>
-
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 scroll-reveal">
-        <h2 class="text-4xl font-bold mb-6 text-center text-astros-orange">About Our Community</h2>
-        <p class="text-lg text-gray-700 dark:text-gray-300 text-center max-w-3xl mx-auto">
-          Like Houston itself, we are a melting pot of all sorts of individuals. The only thing we all share in common
-          is that we live in the Houston area. Whether you're into books, movies, gaming, fitness, or just looking to
-          make friends, there's a place for you here.
+    <!-- Right Scrolling Content -->
+    <div class="split-right">
+      <!-- About Section -->
+      <section class="content-section">
+        <h2 class="section-title">About Our Community</h2>
+        <p class="section-text">
+          Like Houston itself, we are a melting pot of individuals from all walks of life. With over 8,000 members and
+          approaching 12 million messages since 2017, our community stays consistently active, especially during those
+          work procrastination hours. Whether you're into books, movies, gaming, or just looking to make friends,
+          there's a place for you here.
         </p>
-      </div>
-    </section>
+      </section>
 
-    <!-- Activities Section -->
-    <section id="activities" class="py-16 bg-gray-50 dark:bg-dark-bg activities-bg section-bg">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <h2 class="text-4xl font-bold mb-12 text-center text-texans-red scroll-reveal">Community Activities</h2>
-
-        <div class="grid md:grid-cols-2 gap-8">
-          <!-- Book Club -->
-          <div
-            class="bg-white dark:bg-dark-card rounded-lg shadow-lg p-8 card-hover scroll-reveal border-t-4 border-dynamo-orange"
-          >
-            <div class="flex items-center mb-4">
-              <svg class="w-8 h-8 text-dynamo-orange mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                ></path>
-              </svg>
-              <h3 class="text-2xl font-bold">Book Club</h3>
-            </div>
-            <ul class="space-y-2 text-gray-700 dark:text-gray-300">
-              <li>📚 Meet online once a week to discuss the monthly book</li>
-              <li>🗳️ Vote on a new book every month</li>
-              <li>🤝 Meet in person once a month</li>
-              <li>✨ Reading the book is not required—all book lovers are welcome!</li>
-            </ul>
+      <!-- Features Section -->
+      <section class="content-section">
+        <h2 class="section-title">What We Offer</h2>
+        <div class="features-grid">
+          <div class="feature-card border-orange">
+            <h3>Book Club</h3>
+            <p>Weekly online discussions and monthly in-person meetups. Vote on books monthly—reading not required!</p>
           </div>
+          <div class="feature-card border-navy">
+            <h3>Movie Nights</h3>
+            <p>Watch movies together at least once a week, from cult classics to new releases.</p>
+          </div>
+          <div class="feature-card border-orange">
+            <h3>Friendsgiving</h3>
+            <p>Annual Thanksgiving celebration with 50+ members gathering for food and community.</p>
+          </div>
+          <div class="feature-card border-navy">
+            <h3>Secret Santa</h3>
+            <p>Holiday gift exchange bringing together 50+ participants each December.</p>
+          </div>
+        </div>
+      </section>
 
-          <!-- Movie Club -->
-          <div
-            class="bg-white dark:bg-dark-card rounded-lg shadow-lg p-8 card-hover scroll-reveal border-t-4 border-rockets-red"
-            style="animation-delay: 0.2s"
-          >
-            <div class="flex items-center mb-4">
-              <svg class="w-8 h-8 text-rockets-red mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"
-                ></path>
-              </svg>
-              <h3 class="text-2xl font-bold">Movie Club</h3>
-            </div>
-            <ul class="space-y-2 text-gray-700 dark:text-gray-300">
-              <li>🎬 Watch movies together at least once a week</li>
-              <li>🍿 Sometimes more frequent screenings</li>
-              <li>🎭 Discuss and share your love of cinema</li>
-              <li>🎯 Opt-in with the MovieClub role to get notifications</li>
-            </ul>
+      <!-- Statistics Section -->
+      <section class="content-section">
+        <h2 class="section-title">By The Numbers</h2>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-number">8K+</div>
+            <div class="stat-label">Members</div>
+          </div>
+          <div class="stat-box orange">
+            <div class="stat-number">12M</div>
+            <div class="stat-label">Messages</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">2017</div>
+            <div class="stat-label">Founded</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="content-section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <div class="faq-question">How do I join Houston Discord?</div>
+          <div class="faq-answer">
+            Simply click the "Join Now" button and you'll be redirected to our Discord server. If you don't have a
+            Discord account yet, you'll be prompted to create one. It's free and takes less than a minute.
           </div>
         </div>
 
-        <div class="mt-8 text-center text-gray-600 dark:text-gray-400">
-          <p class="text-sm">
-            We host many events throughout the week! Join the Discord to see what's happening and participate in
-            real-time planning.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Rules Section -->
-    <section id="rules" class="py-16 bg-white dark:bg-dark-card rules-bg section-bg">
-      <!-- Decorative Blobs -->
-      <div class="blob blob-1" style="background: #ce1141"></div>
-      <div class="blob blob-3" style="background: #eb6e1f"></div>
-
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <h2 class="text-4xl font-bold mb-8 text-center text-rockets-red scroll-reveal">Community Rules</h2>
-        <p class="text-center text-gray-600 dark:text-gray-400 mb-8 scroll-reveal">
-          These apply in both chat and voice chat. Quite simple:
-        </p>
-
-        <div class="space-y-6">
-          <!-- Rule 1 -->
-          <div
-            class="bg-gradient-to-r from-white to-orange-50 dark:from-dark-card dark:to-dark-bg rounded-lg p-6 card-hover scroll-reveal border-l-4 border-astros-orange shadow-lg"
-          >
-            <h3 class="text-xl font-bold mb-3 text-astros-orange">1. Don't be a jerk.</h3>
-            <ul class="space-y-2 text-gray-700 dark:text-gray-300 ml-4">
-              <li class="flex items-start">
-                <span class="text-astros-orange mr-2">•</span>
-                <span>Harassment, hate speech, and bigotry are not tolerated.</span>
-              </li>
-              <li class="flex items-start">
-                <span class="text-astros-orange mr-2">•</span>
-                <span
-                  >Excessive spam (emotes, caps, curses, links, etc.), trolling, inciting "drama", and provoking others
-                  is not welcome and may be judged based on severity.</span
-                >
-              </li>
-              <li class="flex items-start">
-                <span class="text-astros-orange mr-2">•</span>
-                <span
-                  >Please refrain from nicknames, avatars, or discussion that is harmful, aggressive, or
-                  controversial.</span
-                >
-              </li>
-              <li class="flex items-start">
-                <span class="text-astros-orange mr-2">•</span>
-                <span
-                  >While political names or avatars are okay, you may be asked to change them if they are found
-                  offensive or deliberately provoking.</span
-                >
-              </li>
-              <li class="flex items-start">
-                <span class="text-astros-orange mr-2">•</span>
-                <span>Attempting to 'dox', harass, or target other user(s) will result in a ban.</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Rule 2 -->
-          <div
-            class="bg-gradient-to-r from-white to-red-50 dark:from-dark-card dark:to-dark-bg rounded-lg p-6 card-hover scroll-reveal border-l-4 border-texans-red shadow-lg"
-          >
-            <h3 class="text-xl font-bold mb-3 text-texans-red">2. This server follows the Discord Code of Conduct.</h3>
-            <p class="text-gray-700 dark:text-gray-300 mb-3">
-              We have a higher standard for conversation and moderation. The following is prohibited:
-            </p>
-            <ul class="space-y-2 text-gray-700 dark:text-gray-300 ml-4">
-              <li class="flex items-start">
-                <span class="text-texans-red mr-2">•</span>
-                <span
-                  >Discriminatory jokes and language, hate speech (which calls out a group by their age, race, gender,
-                  beliefs), etc.</span
-                >
-              </li>
-              <li class="flex items-start">
-                <span class="text-texans-red mr-2">•</span>
-                <span>Displaying offensive, derogatory, or sexually explicit content.</span>
-              </li>
-              <li class="flex items-start">
-                <span class="text-texans-red mr-2">•</span>
-                <span>Verbal abuse, insults, or threats towards others.</span>
-              </li>
-              <li class="flex items-start">
-                <span class="text-texans-red mr-2">•</span>
-                <span>Advocating for or encouraging any of the above behavior.</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Rule 3 -->
-          <div
-            class="bg-gradient-to-r from-white to-orange-50 dark:from-dark-card dark:to-dark-bg rounded-lg p-6 card-hover scroll-reveal border-l-4 border-dynamo-orange shadow-lg"
-          >
-            <h3 class="text-xl font-bold mb-3 text-dynamo-orange">
-              3. No solicitation or spamming self-promotion links.
-            </h3>
-            <ul class="space-y-2 text-gray-700 dark:text-gray-300 ml-4">
-              <li class="flex items-start">
-                <span class="text-dynamo-orange mr-2">•</span>
-                <span>Selling or soliciting illegal or inappropriate goods and services is not permitted.</span>
-              </li>
-              <li class="flex items-start">
-                <span class="text-dynamo-orange mr-2">•</span>
-                <span>If you are planning an event, feel free to share it in #event-planning but do not spam it.</span>
-              </li>
-              <li class="flex items-start">
-                <span class="text-dynamo-orange mr-2">•</span>
-                <span
-                  >This is not a buy-sell server. You may share a link to a buy/sell post once in #classifieds but no
-                  spamming. This server does not allow selling or facilitating the sales of prohibited or potentially
-                  dangerous goods (firearms, firearm accessories, ammunition, drugs, and controlled substances).</span
-                >
-              </li>
-            </ul>
-          </div>
-
-          <!-- Rule 4 -->
-          <div
-            class="bg-gradient-to-r from-white to-red-50 dark:from-dark-card dark:to-dark-bg rounded-lg p-6 card-hover scroll-reveal border-l-4 border-rockets-red shadow-lg"
-          >
-            <h3 class="text-xl font-bold mb-3 text-rockets-red">4. This server is 18+ only</h3>
-            <p class="text-gray-700 dark:text-gray-300 ml-4">
-              Due to the various adult topics in our community, we have made the difficult decision to ensure this
-              server is adults only.
-            </p>
-          </div>
-
-          <!-- Rule 5 -->
-          <div
-            class="bg-gradient-to-r from-white to-blue-50 dark:from-dark-card dark:to-dark-bg rounded-lg p-6 card-hover scroll-reveal border-l-4 border-astros-navy shadow-lg"
-          >
-            <h3 class="text-xl font-bold mb-3 text-astros-navy dark:text-astros-orange">
-              5. This server is a closed DM server
-            </h3>
-            <p class="text-gray-700 dark:text-gray-300 ml-4">
-              Members of this server are generally NOT open to random DMs from members. Please ask before sliding into
-              DMs.
-            </p>
+        <div class="faq-item">
+          <div class="faq-question">Is there a cost to join?</div>
+          <div class="faq-answer">
+            Nope! Houston Discord is completely free. We're a community-driven server with no membership fees or
+            paywalls.
           </div>
         </div>
 
-        <div
-          class="mt-8 p-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 rounded-lg text-center shadow-lg"
-        >
-          <p class="text-gray-700 dark:text-gray-300">
-            Please use <span class="font-semibold">#contact-staff</span> and the block/report functionality of the
-            Discord client to help with anything you see that breaks these rules.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Roles Section -->
-    <section id="roles" class="py-16 bg-gray-50 dark:bg-dark-bg roles-bg section-bg">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <h2 class="text-4xl font-bold mb-12 text-center text-dynamo-orange scroll-reveal">Available Roles</h2>
-
-        <!-- Special Interest Channels -->
-        <div class="mb-12">
-          <h3 class="text-2xl font-bold mb-6 text-astros-orange scroll-reveal">Special Interest/Opt-in Channels</h3>
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">18-to-life</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Parent group!</p>
-            </div>
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">The Archives</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">All things history!</p>
-            </div>
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">Arts and Crafts</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Share your artistic and maker skills!</p>
-            </div>
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">Barracks</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Join other veterans in military discussions</p>
-            </div>
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">BookClub</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Monthly books we read and discuss</p>
-            </div>
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">CareerDev</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Discuss jobs and careers with professionals!</p>
-            </div>
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">D&D</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Virtual Dungeons and Dragons group</p>
-            </div>
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">Expat</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">No longer in the Houston area?</p>
-            </div>
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">Fashion</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Share and join the latest trends</p>
-            </div>
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">GetOffMyLawn</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Channel for members ages 30/35+</p>
-            </div>
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">Out-Fit</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Outdoor and fitness enthusiasts</p>
-            </div>
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">Goth</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">All things spooky and cultural</p>
-            </div>
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">Politics</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Political Discussions</p>
-            </div>
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">Puppies and Kittens</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Pet pics and discussion</p>
-            </div>
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">SecretSanta</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Discord Secret Santa</p>
-            </div>
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">Stats</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Discord Server Statistics</p>
-            </div>
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">Stonks</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Finances channel, to the moon</p>
-            </div>
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">Weebs</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Anime and manga discussion</p>
-            </div>
+        <div class="faq-item">
+          <div class="faq-question">Do I need to live in Houston to join?</div>
+          <div class="faq-answer">
+            While most of our members live in the Houston area, we welcome anyone with a connection to Houston—whether
+            you're planning to move here, used to live here, or just love the city.
           </div>
         </div>
 
-        <!-- Ping Groups -->
-        <div class="mb-12">
-          <h3 class="text-2xl font-bold mb-6 text-texans-red scroll-reveal">Ping Groups</h3>
-          <div class="grid md:grid-cols-2 gap-4">
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">Crewston</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">
-                Meetup/hangout group for short notice gatherings. Mentions open 8am-8pm
-              </p>
-            </div>
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">NightCrewston</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Night time meetups at bars. Mentions open 8pm-8am</p>
-            </div>
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">Foodston</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Reach out to other foodies around Houston</p>
-            </div>
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">BikeCrew</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Inner-loop cyclists</p>
-            </div>
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">GoodDeals</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Share good deals you find</p>
-            </div>
-            <div class="rounded-lg p-4 shadow role-card">
-              <h4 class="font-semibold mb-1">MovieClub</h4>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Join in on our movie nights!</p>
-            </div>
+        <div class="faq-item">
+          <div class="faq-question">Are there age requirements?</div>
+          <div class="faq-answer">
+            Yes, Houston Discord is an 18+ server. All members must be 18 years or older to join and participate.
           </div>
         </div>
 
-        <!-- Location Roles -->
-        <div>
-          <h3 class="text-2xl font-bold mb-6 text-rockets-red scroll-reveal">Location Roles</h3>
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-            <div class="bg-white dark:bg-dark-card rounded-lg p-3 shadow role-card text-sm">
-              Bellaire / Alief / Meyerland / West University
-            </div>
-            <div class="bg-white dark:bg-dark-card rounded-lg p-3 shadow role-card text-sm">
-              Conroe / Montgomery / Willis
-            </div>
-            <div class="bg-white dark:bg-dark-card rounded-lg p-3 shadow role-card text-sm">
-              Cy-Fair / Jersey Village / Willowbrook
-            </div>
-            <div class="bg-white dark:bg-dark-card rounded-lg p-3 shadow role-card text-sm">
-              Galena Park / Jacinto City / Channelview / Baytown / Crosby
-            </div>
-            <div class="bg-white dark:bg-dark-card rounded-lg p-3 shadow role-card text-sm">
-              Galveston / Kemah / Gulf Coast / Seabrook / Webster / Clear Lake
-            </div>
-            <div class="bg-white dark:bg-dark-card rounded-lg p-3 shadow role-card text-sm">
-              Heights / Shady Acres / LazyBrook / Timbergrove
-            </div>
-            <div class="bg-white dark:bg-dark-card rounded-lg p-3 shadow role-card text-sm">
-              Katy / Cinco Ranch / Sealy / Brookshire
-            </div>
-            <div class="bg-white dark:bg-dark-card rounded-lg p-3 shadow role-card text-sm">
-              Humble / Lake Houston / Kingwood / Atascocita
-            </div>
-            <div class="bg-white dark:bg-dark-card rounded-lg p-3 shadow role-card text-sm">
-              Pasadena / Deer Park / League City
-            </div>
-            <div class="bg-white dark:bg-dark-card rounded-lg p-3 shadow role-card text-sm">Pearland / Friendswood</div>
-            <div class="bg-white dark:bg-dark-card rounded-lg p-3 shadow role-card text-sm">
-              The Woodlands / Spring / Klein
-            </div>
-            <div class="bg-white dark:bg-dark-card rounded-lg p-3 shadow role-card text-sm">
-              Sugar Land / Missouri City / Richmond / Rosenberg
-            </div>
-            <div class="bg-white dark:bg-dark-card rounded-lg p-3 shadow role-card text-sm">Tomball / Magnolia</div>
-            <div class="bg-white dark:bg-dark-card rounded-lg p-3 shadow role-card text-sm">
-              River Oaks / Montrose / Midtown / Downtown
-            </div>
-            <div class="bg-white dark:bg-dark-card rounded-lg p-3 shadow role-card text-sm">
-              Spring Branch / Memorial / Villages
-            </div>
-            <div class="bg-white dark:bg-dark-card rounded-lg p-3 shadow role-card text-sm">
-              Galleria / Tanglewood / Westchase
-            </div>
-            <div class="bg-white dark:bg-dark-card rounded-lg p-3 shadow role-card text-sm">OST / Bellfort / Hobby</div>
-            <div class="bg-white dark:bg-dark-card rounded-lg p-3 shadow role-card text-sm">
-              NRG / South Main / Almeda
-            </div>
+        <div class="faq-item">
+          <div class="faq-question">What kind of channels do you have?</div>
+          <div class="faq-answer">
+            We have over 100 channels covering everything from food and gaming to politics and pets. Popular channels
+            include #general, #food-drinks, #bookclub, #gaming, #sports, and location-based channels for different
+            Houston neighborhoods.
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Contact Staff CTA -->
-    <section id="contact" class="py-16 contact-bg text-white section-bg">
-      <!-- Three Animated Circular Blobs -->
-      <div class="circular-blob circular-blob-1"></div>
-      <div class="circular-blob circular-blob-2"></div>
-      <div class="circular-blob circular-blob-3"></div>
+        <div class="faq-item">
+          <div class="faq-question">How do I participate in events like Friendsgiving or Secret Santa?</div>
+          <div class="faq-answer">
+            Event announcements are posted in our events channels. Simply keep an eye out for sign-up posts, or ask in
+            #general about upcoming events. Our major events fill up quickly, so join early!
+          </div>
+        </div>
 
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 scroll-reveal">
-        <h2 class="text-3xl font-bold mb-4 glow-text">Need Help?</h2>
-        <p class="text-lg mb-6">If you have questions, concerns, or need assistance, our staff team is here to help.</p>
-        <a
-          href="https://discord.com/channels/253001547636539402/940801177132625920"
-          target="_blank"
-          class="inline-block bg-texans-red hover:bg-rockets-red text-white font-bold py-3 px-8 rounded-lg text-lg transition transform hover:scale-110 shadow-2xl hover:shadow-rockets-red/50 focus:outline-none focus:ring-4 focus:ring-rockets-red/50 hover:ring-4 hover:ring-rockets-red/60"
-        >
-          Contact Staff on Discord
-        </a>
-        <p class="text-sm text-gray-300 mt-4">
-          Use the #contact-staff channel or Discord's block/report functionality for any issues
-        </p>
-      </div>
-    </section>
+        <div class="faq-item">
+          <div class="faq-question">Can I promote my business or events?</div>
+          <div class="faq-answer">
+            We have specific channels for classifieds and event planning. Please review our server rules and post in the
+            appropriate channels. Self-promotion outside designated areas may result in removal.
+          </div>
+        </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 dark:bg-gray-950 text-white py-8">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p class="mb-2">&copy; 2025 Houston Discord Community</p>
-        <p class="text-sm text-gray-400">This server is 18+ and follows the Discord Code of Conduct</p>
-      </div>
-    </footer>
+        <div class="faq-item">
+          <div class="faq-question">How active is the server?</div>
+          <div class="faq-answer">
+            Very active! We average hundreds of messages daily, with peak activity during work hours (we won't judge
+            your procrastination). There's almost always someone online to chat with.
+          </div>
+        </div>
+      </section>
 
-    <!-- Smooth Scroll Script -->
-    <script>
-      // Smooth scroll for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-          }
-        });
-      });
-
-      // Scroll reveal animation
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      }, observerOptions);
-
-      // Observe all elements with scroll-reveal class
-      document.querySelectorAll(".scroll-reveal").forEach((el) => {
-        observer.observe(el);
-      });
-    </script>
+      <!-- Footer -->
+      <footer class="footer">
+        <p class="copyright">&copy; 2025 Houston Discord Community</p>
+        <p>This server is 18+ and follows the Discord Terms of Service</p>
+      </footer>
+    </div>
   </body>
 </html>
