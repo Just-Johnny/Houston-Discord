@@ -35,7 +35,12 @@
     />
     <meta property="twitter:image" content="https://www.houstondiscord.com/assets/images/social-share.webp" />
     <meta property="twitter:image:alt" content="Houston Discord Community" />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <style>
       * {
         margin: 0;
@@ -44,8 +49,10 @@
       }
 
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-          sans-serif;
+        font-family: "Lexend", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
         overflow-x: hidden;
       }
 
@@ -85,6 +92,17 @@
         max-width: 600px;
         position: relative;
         z-index: 2;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Work Sans", sans-serif;
+        font-weight: 900;
+        font-style: normal;
       }
 
       .hero-content h1 {
@@ -264,6 +282,69 @@
         text-decoration: underline;
       }
 
+      /* Books Table */
+      .books-table-container {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .books-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .books-table thead {
+        background: #1e3a5f;
+        color: white;
+      }
+
+      .books-table thead th {
+        padding: 1.25rem 1.5rem;
+        text-align: left;
+        font-size: 1.125rem;
+        font-weight: 700;
+      }
+
+      .books-table tbody tr {
+        border-bottom: 1px solid #e0e0e0;
+        transition: background-color 0.2s ease;
+      }
+
+      .books-table tbody tr:last-child {
+        border-bottom: none;
+      }
+
+      .books-table tbody tr:hover {
+        background-color: #f5f5f5;
+      }
+
+      .books-table tbody td {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+        color: #333;
+      }
+
+      .books-table tbody td:first-child {
+        font-weight: 600;
+        color: #1e3a5f;
+        white-space: nowrap;
+        width: 150px;
+      }
+
+      .books-table tbody td a {
+        color: #eb6e1f;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+
+      .books-table tbody td a:hover {
+        color: #d45d0f;
+        text-decoration: underline;
+      }
+
       /* Footer */
       .footer {
         text-align: center;
@@ -299,6 +380,15 @@
           margin-left: 0;
           padding: 2rem 1.5rem;
         }
+
+        .books-table thead th,
+        .books-table tbody td {
+          padding: 0.875rem 1rem;
+        }
+
+        .books-table tbody td:first-child {
+          width: 120px;
+        }
       }
 
       @media (max-width: 768px) {
@@ -330,6 +420,21 @@
 
         .stat-number {
           font-size: 2.5rem;
+        }
+
+        .books-table thead th {
+          font-size: 1rem;
+          padding: 1rem 0.75rem;
+        }
+
+        .books-table tbody td {
+          padding: 0.75rem;
+          font-size: 0.9rem;
+        }
+
+        .books-table tbody td:first-child {
+          width: 100px;
+          font-size: 0.85rem;
         }
       }
 
@@ -385,7 +490,12 @@
         <div class="features-grid">
           <div class="feature-card border-orange">
             <h3>Book Club</h3>
-            <p>Weekly online discussions and monthly in-person meetups. Vote on books monthly—reading not required!</p>
+            <p style="margin-bottom: 15px">
+              Weekly online discussions and monthly in-person meetups. Vote on books monthly—reading not required!
+            </p>
+            <p style="line-height: 1.5">
+              <a href="#books" style="color: #eb6e1f; text-decoration: none">See a list of<br />books we've read »</a>
+            </p>
           </div>
           <div class="feature-card border-navy">
             <h3>Movie Nights</h3>
@@ -490,9 +600,994 @@
         </div>
       </section>
 
+      <!-- Books Section -->
+      <section class="content-section">
+        <h2 style="color: #eb6e1f">Interested in Houston Book Club?</h2>
+        <h2 class="section-title" style="font-size: 2rem; margin-bottom: 0.5rem" id="books">Books We've Read</h2>
+        <div class="books-table-container">
+          <table class="books-table">
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Book</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Dec 2025</td>
+                <td>Dead December (Hiatus)</td>
+              </tr>
+              <tr>
+                <td>Nov 2025</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/220341389-everything-is-tuberculosis?ac=1&from_search=true&qid=ITr7266WwV&rank=1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Everything Is Tuberculosis</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Oct 2025</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/218185743-bat-eater-and-other-names-for-cora-zeng"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Bat Eater and Other Names for Cora Zeng</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Sep 2025</td>
+                <td>
+                  <a href="https://www.goodreads.com/en/book/show/25079833" target="_blank" rel="noopener noreferrer"
+                    >The Silence of the Sea</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Aug 2025</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/19101283-the-son?from_search=true&from_srp=true&qid=lA5TXn1Cu2&rank=12"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Son</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jul 2025</td>
+                <td>
+                  <a href="https://www.goodreads.com/book/show/34523174" target="_blank" rel="noopener noreferrer"
+                    >Into The Drowning Deep</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jun 2025</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/173754979-james"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >James</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>May 2025</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/59947696-wrong-place-wrong-time"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Wrong Place Wrong time
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>Apr 2025</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/199534613-margo-s-got-money-troubles"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Margo's Got Money Troubles</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Mar 2025</td>
+                <td>
+                  <a href="https://www.goodreads.com/book/show/762806" target="_blank" rel="noopener noreferrer"
+                    >Gorky Park</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Feb 2025</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/13456414-a-short-stay-in-hell?ref=rae_0"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >A Short Stay In Hell</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jan 2025</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/199698485-the-god-of-the-woods"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The God of the Woods</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Dec 2024</td>
+                <td>Dead December (Hiatus)</td>
+              </tr>
+              <tr>
+                <td>Nov 2024</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/59575939-an-immense-world"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >An Immense World: How Animal Senses Reveal The World Around Us</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Oct 2024</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/56179372-slewfoot"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Slewfoot</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Sep 2024</td>
+                <td>
+                  <a href="https://www.goodreads.com/book/show/62919162" target="_blank" rel="noopener noreferrer"
+                    >Whalefall</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Aug 2024</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/77103.The_Glass_Palace"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Glass Palace</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jul 2024</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/58727132-eversion"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Eversion</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jun 2024</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/19161835-confessions?ref=nav_sb_ss_1_27"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Confessions</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>May 2024</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/35960911-the-man-who-died"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The man who died</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Apr 2024</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/58784475-tomorrow-and-tomorrow-and-tomorrow?ref=nav_sb_ss_1_8"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Tomorrow and tomorrow and tomorrow</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Mar 2024</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/19256975-journey-under-the-midnight-sun"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Journey under the midnight Sun</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Feb 2024</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/32758901-all-systems-red"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >All Systems Red</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jan 2024</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/64623481-the-september-house?from_choice=true"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The September House</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Dec 2023</td>
+                <td>Don't read December (Hiatus)</td>
+              </tr>
+              <tr>
+                <td>Nov 2023</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/63133205-the-woman-in-me"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Woman In Me
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>Oct 2023</td>
+                <td>
+                  <a href="https://www.goodreads.com/book/show/20893407" target="_blank" rel="noopener noreferrer"
+                    >The Lesser Dead</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Sep 2023</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/61884843-night-will-find-you"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Night Will Find You</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Aug 2023</td>
+                <td>
+                  <a href="https://www.goodreads.com/book/show/133394" target="_blank" rel="noopener noreferrer"
+                    >Our Man in Havana</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jul 2023</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/57693184-dead-silence"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Dead Silence
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>Jun 2023</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/13330370-the-last-policeman?ac=1&from_search=true&qid=xrTrQWGV8t&rank=1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Last Policeman</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>May 2023</td>
+                <td>
+                  <a href="https://www.goodreads.com/book/show/59316367/" target="_blank" rel="noopener noreferrer"
+                    >Look Closer</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Apr 2023</td>
+                <td>
+                  <a href="https://www.goodreads.com/en/book/show/27833803" target="_blank" rel="noopener noreferrer"
+                    >The Hike</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Mar 2023</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/54860585-razorblade-tears"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Razorblade Tears</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Feb 2023</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/14497.Neverwhere"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Neverwhere
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>Jan 2023</td>
+                <td>
+                  <a href="https://www.goodreads.com/book/show/12287209-wool" target="_blank" rel="noopener noreferrer"
+                    >Wool (#1)</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Dec 2022</td>
+                <td>Do whatever you want December (Hiatus)</td>
+              </tr>
+              <tr>
+                <td>Nov 2022</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/1221679.The_Man_With_The_Candy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Man With The Candy: The story of the Houston mass murders</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Oct 2022</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/52180399-the-only-good-indians"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Only Good Indians</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Sep 2022</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/13543121-between-two-fires"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Between Two Fires 🔥</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Aug 2022</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/43522585-old-bones"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Old Bones</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jul 2022</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/26892110-the-library-at-mount-char?from_search=true&from_srp=true&qid=55ygcIaEeL&rank=1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Library at Mount Char</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jun 2022</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/34066798-a-gentleman-in-moscow?from_search=true&from_srp=true&qid=95nHGUWb4c&rank=1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >A gentleman in moscow</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>May 2022</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/48595550-the-death-of-vivek-oji?ref=nav_sb_ss_1_22"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Death of Vivek Oji</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Apr 2022</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/57693604-secret-identity"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Secret Identity</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Mar 2022</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/10847.Under_the_Banner_of_Heaven"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Under the Banner of Heaven: A story of violent faith</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Feb 2022</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/60931.Kindred?from_search=true&from_srp=true&qid=8WXSYY82EJ&rank=1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Kindred</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jan 2022</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/55100588-the-collective"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Collective</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Dec 2021</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/50623864-the-invisible-life-of-addie-larue"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Invisible Life of Addie LaRue</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Nov 2021</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/52397.Parable_of_the_Sower"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Parable of The Sower
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>Oct 2021</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/41154336-the-chestnut-man"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Chestnut Man</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Sep 2021</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/55711747-chasing-the-boogeyman"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Chasing the Boogeyman</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Aug 2021</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/54493401-project-hail-mary?from_search=true&from_srp=true&qid=AZWkj6WDBn&rank=1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Project Hail Mary</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jul 2021</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/18302455-the-circle?ref=nav_sb_ss_1_10"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The circle</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jun 2021</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/45299992-if-you-tell?ref=nav_sb_ss_1_12"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >If You Tell</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>May 2021</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/320.One_Hundred_Years_of_Solitude?from_search=true&from_srp=true&qid=8918Hift37&rank=1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >One Hundred Years of Solitude</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Apr 2021</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/23264870-the-long-and-faraway-gone"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Long and Faraway Gone</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Mar 2021</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/21936809-the-kind-worth-killing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The kind worth killing</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Feb 2021</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/15783514-the-ocean-at-the-end-of-the-lane?from_search=true&from_srp=true&qid=4WDBVB6ABr&rank=1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Ocean at the End of the Lane</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jan 2021</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/53152636-mexican-gothic?ref=nav_sb_ss_1_14"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Mexican Gothic</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Dec 2020</td>
+                <td>Dead December (Hiatus)</td>
+              </tr>
+              <tr>
+                <td>Nov 2020</td>
+                <td>No Reading November (Hiatus)</td>
+              </tr>
+              <tr>
+                <td>Oct 2020</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/71413.Skin_Folk?from_search=true&from_srp=true&qid=Mc03zAIyP7&rank=1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Skin Folk</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Sep 2020</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/7745.Fear_and_Loathing_in_Las_Vegas?ac=1&from_search=true&qid=kN3PZTt3W1&rank=1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Fear and Loathing in Las Vegas</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Aug 2020</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/51171377-axiom-s-end"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Axiom's End</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jul 2020</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/43263680-ninth-house"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Ninth House</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jun 2020</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/9361589-the-night-circus"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Night Circus</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>May 2020</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/35133922-educated?from_search=true&from_srp=true&qid=oYpAan23ja&rank=1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Educated</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Apr 2020</td>
+                <td>Anything April</td>
+              </tr>
+              <tr>
+                <td>Mar 2020</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/1126719.House_of_Suns?ref=nav_sb_ss_1_13"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >House of Sons</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Feb 2020</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/19161852-the-fifth-season"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Fifth Season</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jan 2020</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/4309446-last-days"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Last Days</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Dec 2019</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/33555224-thunderhead"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Thunder Head</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Nov 2019</td>
+                <td>
+                  <a href="http://www.goodreads.com/book/show/28954189-scythe" target="_blank" rel="noopener noreferrer"
+                    >Scythe</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Oct 2019</td>
+                <td>
+                  <a href="https://www.goodreads.com/en/book/show/467032" target="_blank" rel="noopener noreferrer"
+                    >The Bad seed</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Sep 2019</td>
+                <td>Slack off September (Hiatus)</td>
+              </tr>
+              <tr>
+                <td>Aug 2019</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/35959740-circe?ref=nav_sb_ss_1_5"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Circe</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jul 2019</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/42046112-recursion?from_search=true"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Recursion</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jun 2019</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/40024.The_Alienist?ref=nav_sb_ss_1_12"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Alienist Cont'd</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>May 2019</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/40024.The_Alienist?ref=nav_sb_ss_1_12"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Alienist</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Apr 2019</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/35995489-the-extraordinary-life-of-sam-hell"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Extraordinary Life of Sam Hell</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Mar 2019</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/7203669-galveston"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Galveston</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Feb 2019</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/39791736-unholy-land"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Unholy Land</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jan 2019</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/38348476-calypso?ac=1&from_search=true&qid=D1mCqErBLl&rank=1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Calypso</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Dec 2018</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/18498558-bird-box"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Bird Box</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Nov 2018</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/27824826-the-dry"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Dry</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Oct 2018</td>
+                <td>
+                  <a
+                    href="http://www.goodreads.com/book/show/29901930-the-fisherman"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Fisherman</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Sep 2018</td>
+                <td>
+                  <a href="https://www.goodreads.com/book/show/164154" target="_blank" rel="noopener noreferrer"
+                    >A Canticle for Leibowitz</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Aug 2018</td>
+                <td>
+                  <a href="https://www.goodreads.com/book/show/5470.1984" target="_blank" rel="noopener noreferrer"
+                    >1984.0</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jul 2018</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/27833670-dark-matter"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Dark Matter</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jun 2018</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/12067.Good_Omens"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Good Omens: The Nice and Accurate Prophecies of Agnes Nutter, Witch</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>May 2018</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/35068432-i-ll-be-gone-in-the-dark"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >I'll Be Gone in the Dark</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Apr 2018</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/6334.Never_Let_Me_Go"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Never Let Me Go</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Mar 2018</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/30901606-the-moth-presents-all-these-wonders?from_search=true"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >The Moth Presents All These Wonders: True Stories about Facing the Unknown</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Feb 2018</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/4985.Welcome_to_the_Monkey_House"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Welcome to the Monkey House</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jan 2018</td>
+                <td>
+                  <a
+                    href="https://www.goodreads.com/book/show/29496076-killers-of-the-flower-moon"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Killers of the Flower Moon: The Osage Murders and the Birth of the FBI</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       <!-- Footer -->
       <footer class="footer">
-        <p class="copyright">&copy; 2025 Houston Discord Community</p>
+        <p class="copyright">
+          &copy; 2017-
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          Houston Discord Community
+        </p>
         <p>This server is 18+ and follows the Discord Terms of Service</p>
       </footer>
     </div>
