@@ -12,6 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <link rel="canonical" href="https://www.houstondiscord.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.houstondiscord.com/" />
     <meta property="og:title" content="Houston Discord - Houston Area Discord and Online Discussion Community." />
@@ -538,8 +539,8 @@
         <div class="faq-item">
           <div class="faq-question">How do I join Houston Discord?</div>
           <div class="faq-answer">
-            Simply click the "Join Now" button and you'll be redirected to our Discord server. If you don't have a
-            Discord account yet, you'll be prompted to create one. It's free and takes less than a minute.
+            Simply click the "Join Now" button and you'll be redirected to our Houston Discord server. If you don't have
+            a Discord account yet, you'll be prompted to create one. It's free and takes less than a minute.
           </div>
         </div>
 
@@ -1591,5 +1592,54 @@
         <p>This server is 18+ and follows the Discord Terms of Service</p>
       </footer>
     </div>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Houston Discord",
+        "alternateName": "Houston Discord Community",
+        "url": "https://www.houstondiscord.com",
+        "logo": "https://www.houstondiscord.com/android-chrome-512x512.png",
+        "description": "Houston's largest Discord community with over 8,000 members connecting locals through events, discussions, and meetups since 2017.",
+        "foundingDate": "2017",
+        "memberOf": {
+          "@type": "Organization",
+          "name": "Discord"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Houston",
+          "containedIn": {
+            "@type": "State",
+            "name": "Texas"
+          }
+        },
+        "sameAs": ["https://discord.gg/houston"]
+      }
+    </script>
+    <script>
+      // Manual outbound link tracking
+      document.addEventListener("DOMContentLoaded", function () {
+        // Get all links
+        var allLinks = document.querySelectorAll('a[href^="http"]');
+
+        allLinks.forEach(function (link) {
+          link.addEventListener("click", function (e) {
+            var url = this.href;
+            var hostname = new URL(url).hostname;
+
+            // Check if it's an outbound link
+            if (hostname !== window.location.hostname) {
+              gtag("event", "click", {
+                link_url: url,
+                link_domain: hostname,
+                link_text: this.innerText,
+                outbound: true,
+              });
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
